@@ -4,6 +4,7 @@
     <head>
         <title>Liquid Glass CSS Demos</title>
         <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
 
     <body>
@@ -11,16 +12,48 @@
             <div class="demoContainer">
                 <h3 class="demoContainerTitle">Button</h3>
                 <div class="demo">
-                    <button id="regularBtn">Press Me!</button>
+                    <button id="regularBtn" class="shownButton">Press Me!</button>
                 </div>
             </div>
 
             <div class="demoContainer">
-                <h3 class="demoContainerTitle">Draggable Button</h3>
+                <h3 class="demoContainerTitle">3D Touch Effect Button</h3>
                 <div class="demo">
-                    <button id="dragBtn">Press Me!</button>
+                    <button id="dragBtn" class="shownButton" onclick="doIconicTouchHaptics()">Press Me!</button>
+                </div>
+            </div>
+
+            <div class="demoContainer" style="width: 350px;">
+                <h3 class="demoContainerTitle">Tab Bar</h3>
+                <div class="demo">
+                    <div id="tabBar">
+                        <button id="tabSelector" class="shownButton"></button>
+                        <div id="tabsContainer">
+                            <button id="tab1" class="tabBarText invisibleBtn" onclick="changeTab('1')">Tab 1</button>
+                            <button id="tab2" class="tabBarText invisibleBtn" onclick="changeTab('2')">Tab 2</button>
+                            <button id="tab3" class="tabBarText invisibleBtn" onclick="changeTab('3')">Tab 3</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            function doIconicTouchHaptics() {
+                if (navigator.vibrate) {
+                    navigator.vibrate(300);
+                }
+            }
+
+            function changeTab(tabToChange) {
+                const tabBar = document.getElementById("tabBar");
+
+                document.getElementById("tabSelector").classList.add("activeTabSelector");
+                setTimeout(function() {document.getElementById("tabSelector").classList.remove("activeTabSelector");}, 300)
+                let tabRect = document.getElementById(`tab${tabToChange}`).getBoundingClientRect();
+                let tabBarRect = tabBar.getBoundingClientRect();
+                document.getElementById("tabSelector").style.left = (tabRect.left - tabBarRect.left) + "px";
+            }
+        </script>
     </body>
 </html>

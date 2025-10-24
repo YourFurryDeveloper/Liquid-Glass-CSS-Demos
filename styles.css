@@ -4,11 +4,19 @@ html {
     background: linear-gradient(90deg, rgba(139, 26, 145, 1) 0%, rgba(53, 6, 59, 1) 100%);
 }
 
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: pan-y;
+}
+
 #maincontent {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .demoContainer {
@@ -17,6 +25,9 @@ html {
     display: flex;
     flex-direction: column;
     border-radius: 16px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 
     background-image: url('https://4kwallpapers.com/images/wallpapers/pple-carplay-ios-26--23298.jpg');
     background-repeat: no-repeat;
@@ -47,32 +58,7 @@ html {
 
 
 
-/*@keyframes sizeBounce {
-    0% {
-        width: 90px;
-        height: 90px;
-    }
-
-    30% {
-        width: 105px;
-        height: 80px;
-        transform: scale(90%);
-    }
-
-    60% {
-        width: 90px;
-        height: 90px;
-        transform: scale(125%);
-    }
-
-    100% {
-        width: 90px;
-        height: 90px;
-        transform: scale(115%);
-    }
-}*/
-
-@keyframes sizeBounce {
+@keyframes threeDTouchBounce {
     0% {
         width: 90px;
         height: 90px;
@@ -97,7 +83,13 @@ html {
     }
 }
 
-button {
+.invisibleBtn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.shownButton {
     color: white;
     font-weight: 500;
     width: 90px;
@@ -109,6 +101,7 @@ button {
     backdrop-filter: blur(3.5px);
     -webkit-backdrop-filter: blur(3.5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    outline: none;
 }
 
 #regularBtn, #dragBtn {
@@ -126,7 +119,7 @@ button {
 }
 
 #dragBtn:active {
-    animation: sizeBounce;
+    animation: threeDTouchBounce;
     animation-duration: 0.3s;
 
     width: 90px;
@@ -136,4 +129,103 @@ button {
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
     background: rgba(255, 255, 255, 0.12);
+}
+
+
+#tabBar {
+    width: 80%;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(71, 71, 71);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+
+    transition: all 0.2s;
+}
+
+#tabsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+}
+
+.tabBarText {
+    color: white;
+    font-size: 17px;
+}
+
+@keyframes tabSelectorMove {
+    0% {
+        width: 80px;
+        height: 100%;
+    }
+
+    30% {
+        width: 70px;
+        height: 75px;
+        transform: scale(120%);
+    }
+
+    70% {
+        width: 100px;
+        height: 40px;
+        background-color: rgb(96, 96, 96);
+    }
+
+    100% {
+        width: 80px;
+        height: 100%;
+        transform: scale(100%);
+    }
+}
+
+#tabSelector {
+    width: 80px;
+    height: 85%;
+    border-radius: 30px;
+    background-color: rgb(96, 96, 96);
+    border: none;
+    position: absolute;
+
+    transition: all 0.3s;
+}
+
+#tabBar:has(#tabSelector:active) {
+    transform: scale(105%);
+}
+
+#tabSelector:active {
+    transform: scale(137%);
+    -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF; 
+    box-shadow: 0px 0px 40px 17px #FFFFFF;
+
+    animation: tabSelectorMove;
+    animation-duration: 0.3s;
+
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 0.3px solid rgba(255, 255, 255, 0.7);
+}
+
+.activeTabSelector {
+    -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF; 
+    box-shadow: 0px 0px 40px 17px #FFFFFF;
+
+    animation: tabSelectorMove;
+    animation-duration: 0.3s;
+
+    background: rgba(255, 255, 255, 0);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border: 0.3px solid rgba(255, 255, 255, 0.7);
 }
