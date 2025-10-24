@@ -8,6 +8,9 @@
     </head>
 
     <body>
+        <h1>IOS 26 Liquid Glass CSS Demos</h1>
+        <h3>By <a href="https://github.com/YourFurryDeveloper" style="text-decoration: none; color: lightblue;">YourFurryDeveloper</a> on GitHub</h3>
+
         <div id="maincontent">
             <div class="demoContainer">
                 <h3 class="demoContainerTitle">Button</h3>
@@ -36,6 +39,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="demoContainer">
+                <h3 class="demoContainerTitle">3D Touch Effect Button</h3>
+                <div class="demo">
+                    <button id="dragBtn" class="shownButton" onclick="doIconicTouchHaptics()">Press Me!</button>
+                </div>
+            </div>
         </div>
 
         <script>
@@ -49,10 +59,18 @@
                 const tabBar = document.getElementById("tabBar");
 
                 document.getElementById("tabSelector").classList.add("activeTabSelector");
-                setTimeout(function() {document.getElementById("tabSelector").classList.remove("activeTabSelector");}, 300)
+                document.getElementById(`tab${tabToChange}`).classList.add("activeTabButton");
+
+                setTimeout(function() {
+                    document.getElementById("tabSelector").classList.remove("activeTabSelector");
+                }, 500);
+                setTimeout(function() {
+                    document.getElementById(`tab${tabToChange}`).classList.remove("activeTabButton");
+                }, 200);
+
                 let tabRect = document.getElementById(`tab${tabToChange}`).getBoundingClientRect();
                 let tabBarRect = tabBar.getBoundingClientRect();
-                document.getElementById("tabSelector").style.left = (tabRect.left - tabBarRect.left) + "px";
+                document.getElementById("tabSelector").style.left = (tabRect.left - 14 - tabBarRect.left) + "px";
             }
         </script>
     </body>

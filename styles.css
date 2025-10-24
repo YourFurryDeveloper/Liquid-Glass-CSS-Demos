@@ -4,6 +4,16 @@ html {
     background: linear-gradient(90deg, rgba(139, 26, 145, 1) 0%, rgba(53, 6, 59, 1) 100%);
 }
 
+h1 {
+    text-align: center;
+    color: white;
+}
+
+h3 {
+    text-align: center;
+    color: rgb(191, 191, 191);
+}
+
 * {
     user-select: none;
     -webkit-user-select: none;
@@ -159,30 +169,62 @@ html {
 .tabBarText {
     color: white;
     font-size: 17px;
+    transition: all 0.3s;
 }
 
 @keyframes tabSelectorMove {
     0% {
         width: 80px;
         height: 100%;
+
+        -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF !important; 
+        box-shadow: 0px 0px 40px 17px #FFFFFF !important;
+        background: rgba(255, 255, 255, 0);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        border: 0.3px solid rgba(255, 255, 255, 0.7);
     }
 
     30% {
         width: 70px;
         height: 75px;
         transform: scale(120%);
+
+        -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF !important; 
+        box-shadow: 0px 0px 40px 17px #FFFFFF !important;
+        background: rgba(255, 255, 255, 0);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        border: 0.3px solid rgba(255, 255, 255, 0.7);
     }
 
-    70% {
+    60% {
         width: 100px;
         height: 40px;
         background-color: rgb(96, 96, 96);
+
+        -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF !important; 
+        box-shadow: 0px 0px 40px 17px #FFFFFF !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px);
+        border: 0.3px solid rgba(255, 255, 255, 0.7);
     }
 
     100% {
         width: 80px;
         height: 100%;
         transform: scale(100%);
+        background-color: rgb(96, 96, 96);
+
+        -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF !important; 
+        box-shadow: 0px 0px 40px 17px #FFFFFF !important;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+        border: 0px solid rgba(255, 255, 255, 0);
     }
 }
 
@@ -217,15 +259,11 @@ html {
 }
 
 .activeTabSelector {
+    animation: tabSelectorMove;
+    animation-duration: 0.5s;
+}
+
+.activeTabButton {
     -webkit-box-shadow: 0px 0px 50px 17px #FFFFFF; 
     box-shadow: 0px 0px 40px 17px #FFFFFF;
-
-    animation: tabSelectorMove;
-    animation-duration: 0.3s;
-
-    background: rgba(255, 255, 255, 0);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    border: 0.3px solid rgba(255, 255, 255, 0.7);
 }
